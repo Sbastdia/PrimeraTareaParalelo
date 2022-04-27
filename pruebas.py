@@ -19,7 +19,7 @@ scrape ("c.com") # hecho por el proceso 3
 scrape ("d.com") # hecho por proceso 4'''
 
 if __name__ == "__main__":
-    pool = Pool(processes=2)
+    pool = Pool(processes=4)
     data = pool.map(scrape, urls)
     pool.close()
     print()
