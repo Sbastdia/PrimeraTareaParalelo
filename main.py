@@ -2,8 +2,6 @@ import random
 from time import sleep
 from multiprocessing import Pool
 
-
-
 def scrape(url):
     print("starting", url)
     duration = round(random.random(), 3)
@@ -11,12 +9,16 @@ def scrape(url):
     print("finished", url, "time taken:", duration, "seconds")
     return url, duration
 
+urls = ["a.com", "b.com", "c.com", "d.com"]
+
+'''scrape ("a.com") # hecho por el proceso 1
+scrape ("b.com") # hecho por el proceso 2
+scrape ("c.com") # hecho por el proceso 3
+scrape ("d.com") # hecho por proceso 4'''
+
 if __name__ == "__main__":
-    urls = ["a.com", "b.com", "c.com", "d.com"]
-    output=[]
     pool = Pool(processes=4)
     data = pool.map(scrape, urls)
-
     pool.close()
     print()
     for row in data:
